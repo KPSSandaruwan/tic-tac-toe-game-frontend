@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GameService } from 'src/app/services/game.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-main-layout',
@@ -26,25 +27,30 @@ export class MainLayoutComponent {
         this.player = res.data.player;
         this.gameId = res.data._id;
       } else {
-        console.log('res', res)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     });
   }
 
   public resetGame() {
-
+    let gameData = {
+      gameId: this.gameId
+    }
+    this.gameService.resetGame(gameData).subscribe((res: any) => {
+      if (res.success) {
+        this.board = res.data.board;
+        this.currentPlayer = res.data.currentPlayer;
+        this.player = res.data.player;
+      }
+    })
   }
 
-
-
-  makeMove(row: number, col: number): void {
-    console.log('row', row)
-    console.log('col', col)
-
+  public makeMove(row: number, col: number): void {
     if (this.board[row][col] === '') {
-      // this.board[row][col] = this.currentPlayer;
-      // this.switchPlayer();
-
       let gameData = {
         gameId: this.gameId,
         row: row,
@@ -53,9 +59,7 @@ export class MainLayoutComponent {
       }
 
       this.gameService.makeMove(gameData).subscribe((res: any) => {
-        console.log('makeMove', res)
         if (res.success) {
-
           this.board = res.data.board;
           this.currentPlayer = res.data.currentPlayer;
           this.player = res.data.player;
@@ -63,14 +67,24 @@ export class MainLayoutComponent {
 
           } else {
             this.gameStatus = res.data.status;
+            let message: string = ""
+            if (res.data.status === "Won") {
+              this.gameStatus = "Won"
+              message = "You won the match, Congratulations!!!"
+            } else if (res.data.status === "loose") {
+              this.gameStatus = "Loose";
+              message = "You loose the match, Try again!!!"
+            } else if (res.data.status === "draw") {
+              this.gameStatus = "Draw";
+              message = "Match draw, Try again!!!"
+            }
+            Swal.fire(this.gameStatus, message, 'success').then(r => {
+              this.startGame()
+            });
           }
         }
       })
     }
-  }
-
-  switchPlayer() {
-    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
   }
 
 }

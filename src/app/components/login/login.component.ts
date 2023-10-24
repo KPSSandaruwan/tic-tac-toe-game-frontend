@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -21,18 +22,13 @@ export class LoginComponent {
     this.authService.login(credentials).subscribe((res: any) => {
       console.log('res', res)
       if (res.success) {
-        // Swal.fire(
-        //   'Success',
-        //   res.message,
-        //   'success'
-        // )
         this.router.navigate(['/game-board']);
       } else {
-        // Swal.fire({
-        //   icon: 'error',
-        //   title: 'Oops...',
-        //   text: 'Something went wrong!'
-        // })
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     });
   }

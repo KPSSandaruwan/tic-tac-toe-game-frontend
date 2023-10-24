@@ -7,17 +7,7 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 const routes: Routes = [
   {
     path: '',
-    component: MainLayoutComponent,
-    children: [
-      {
-        path: 'game-board',
-        redirectTo: 'full',
-      },
-      {
-        path: 'game-board',
-        component: MainLayoutComponent,
-      }
-    ]
+    component: LoginComponent,
   },
   {
     path: 'login',
@@ -26,6 +16,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignUpComponent
+  },
+  {
+    path: 'game-board',
+    component: MainLayoutComponent,
   }
 ];
 

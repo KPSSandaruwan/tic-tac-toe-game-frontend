@@ -29,4 +29,14 @@ export class GameService {
     const url = Util.apiAuthUrl(`play-turn`)
     return this.http.post(url, gameData, { headers })
   }
+
+  public resetGame(gameData: {gameId: string}) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const url = Util.apiAuthUrl(`reset-game`)
+    return this.http.post(url, gameData, { headers })
+  }
 }
