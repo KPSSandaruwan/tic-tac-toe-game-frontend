@@ -10,18 +10,22 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       {
-        path: 'book-inventory',
+        path: 'game-board',
         redirectTo: 'full',
       },
       {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'author-list',
-        component: SignUpComponent
+        path: 'game-board',
+        component: MainLayoutComponent,
       }
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent
   }
 ];
 

@@ -1,1 +1,33 @@
-<p>main-layout works!</p>
+
+<div>
+  <div class="game-board-container" >
+    <mat-card class="game-board" *ngIf="isGameStarted">
+      <mat-card-content>
+        <div class="board-row">
+          <div class="board-cell" *ngFor="let cell of board[0]; let col = index" (click)="makeMove(0, col)">{{ cell }}</div>
+        </div>
+        <div class="board-row">
+          <div class="board-cell" *ngFor="let cell of board[1]; let col = index" (click)="makeMove(1, col)">{{ cell }}</div>
+        </div>
+        <div class="board-row">
+          <div class="board-cell" *ngFor="let cell of board[2]; let col = index" (click)="makeMove(2, col)">{{ cell }}</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div style="text-align:center">
+    <button mat-raised-button color="primary" (click)="startGame()">Start Game</button>
+    <button mat-raised-button color="secondary" (click)="resetGame()">Reset Game</button>
+  </div>
+  <div style="text-align:center">
+    <div>
+      <h1>{{gameStatus}}</h1>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
