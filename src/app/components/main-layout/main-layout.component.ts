@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { GameService } from 'src/app/services/game.service';
 import Swal from 'sweetalert2';
 
@@ -12,14 +13,13 @@ export class MainLayoutComponent {
   currentPlayer: 'X' | 'O' = 'X';
   isGameStarted: boolean = false;
   player: string = "";
-  gameId: string = ""
-  gameStatus: string = ""
+  gameId: string = "";
+  gameStatus: string = "";
 
-  constructor(private gameService: GameService) {}
+  constructor(private gameService: GameService, private authService: AuthService) {}
 
   public startGame() {
     this.gameService.startGame().subscribe((res: any) => {
-      console.log('res', res)
       if (res.success) {
         this.isGameStarted = true;
         this.board = res.data.board;
@@ -85,6 +85,10 @@ export class MainLayoutComponent {
         }
       })
     }
+  }
+
+  public logOut() {
+    this.authService.logout();
   }
 
 }

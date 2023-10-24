@@ -2,11 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin: 20px;
 }
 
 .game-board {
   width: 300px;
+  background-color: #e2e46f;
 }
 
 .board-row {
@@ -21,8 +22,19 @@
   padding: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
+  border: 1px solid #000;
 }
 
 .board-cell:hover {
-  background-color: #f3f3f3;
+  background-color: #709634;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.control-button {
+  margin: 8px;
 }
