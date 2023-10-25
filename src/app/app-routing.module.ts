@@ -20,7 +20,11 @@ const routes: Routes = [
   {
     path: 'game-board',
     component: MainLayoutComponent,
-  }
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
