@@ -1,12 +1,12 @@
 
-<div class="dashboard-container" style="display: flex; flex-direction: column">
+<div class="dashboard-container">
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <mat-toolbar style="justify-content: space-between" color="primary">
       <span>Tic Tac Toe</span>
       <button mat-raised-button color="accent" (click)="logOut()">Log out</button>
     </mat-toolbar>
   </nav>
-  
+
   <div style="flex-grow: 2;">
     <div class="game-board-container">
       <mat-card class="game-board" *ngIf="isGameStarted">

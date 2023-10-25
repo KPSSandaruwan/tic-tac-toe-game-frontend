@@ -1,20 +1,32 @@
-<div class="login-container">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form (ngSubmit)="login()">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
-        </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Login</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
+<div class="dashboard-container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <mat-toolbar style="justify-content: space-between" color="primary">
+      <span>Tic Tac Toe</span>
+    </mat-toolbar>
+  </nav>
+  <div class="login-container" style="flex-grow: 2;">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="login()" class="login-form">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </form>
+        <div style="margin-top: 10px;">
+          Don't have tic toc toe account? <b><a class="nav-link" routerLink="/signup" routerLinkActive="active">Register now</a></b>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <footer class="footer text-center" style="background-color: #3f51b5; color:aliceblue;flex-grow: 0.1; padding-top: 10px; text-align:center">
+    2023 &copy; Suraja Sandaruwan | <a href="/" target="_blank" style="color: aliceblue;">suraja.com</a>
+  </footer>
 </div>
-
 

@@ -2,10 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-grow: 2;
 }
 
 .full-width {
   width: 100%;
   margin: 10px 0;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
